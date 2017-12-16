@@ -908,6 +908,10 @@ class ConcursantTableSeeder extends Seeder
             ['322296','Ramon Mendivil', ],
             ['322297','Luis Montoya'],
             ['322295','Daniel Vasquez'],
+            ['400001', 'Christian Garcia'],
+            ['400002', 'Juan Pedro Miranda'],
+            ['400003', 'Gabriela Lopez'],
+            
         ];
 
         foreach ($concursants as $key => $concursant) {
