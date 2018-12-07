@@ -95,7 +95,7 @@ class MainController extends Controller
     
     public function concursants()
     {
-        $concursants = Concursant::where('checked', true)->get();  
+        $concursants = Concursant::where('checked', true)->orderBy('name')->get();  
         return view('concursants', ['concursants' => $concursants]);
     }
 
