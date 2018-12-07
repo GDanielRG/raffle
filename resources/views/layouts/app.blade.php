@@ -56,14 +56,14 @@
                             <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
                             <li><a href="{{ url('/prizes') }}">Ver lista de regalos</a></li>
                             <li><a href="{{ url('/concursants') }}">Ver lista de participantes</a></li>
-                            {{-- <li><a href="{{ url('/check') }}">Revisar si ganaste</a></li> --}}
+                            <li><a href="{{ url('/check') }}">Revisar si ganaste</a></li>
                         @else
                             <li class="dropdown">
                                 <li><a href="{{ url('/assist') }}">Marcar asistencia</a></li>
                                 <li><a href="{{ url('/prizes') }}">Ver lista de regalos</a></li>
                                 <li><a href="{{ url('/concursants') }}">Ver lista de participantes</a></li>
                                 {{-- <li><a href="{{ url('/home') }}">Ir a la rifa</a></li> --}}
-                                {{-- <li><a href="{{ url('/check') }}">Revisar si ganaste</a></li> --}}
+                                <li><a href="{{ url('/check') }}">Revisar si ganaste</a></li>
                                 <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
