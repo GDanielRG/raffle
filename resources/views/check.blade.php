@@ -34,7 +34,7 @@
                 @if($concursant->prize)
                 <div class="alert alert-success">
                     <p>{{$concursant->name}}</p>
-                    <strong>Ganaste!</strong> {{$concursant->prize->name}}
+                    <strong>Ganaste!</strong> {{$concursant->prize->name}} ({{$concursant->prize->article_no}})
                 </div>
                 @else
 

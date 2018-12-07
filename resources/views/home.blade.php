@@ -44,7 +44,7 @@
 </div>
 <br>
 </div>
-        <a class="btn btn-success col-sm-4 col-sm-offset-4 huge" href="/raffled">Riffar!</a>
+        <a class="btn btn-success col-sm-4 col-sm-offset-4 huge" href="/raffles">Riffar!</a>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

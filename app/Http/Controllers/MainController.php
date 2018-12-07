@@ -5,17 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Concursant;
 use App\Prize;
+use App\Raffle;
+use Carbon\Carbon;
 
 class MainController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        Carbon::setLocale('es');
+    }
+
     public function index()
     {
         $concursants = Concursant::where();
     }
 
-    public function raffled()
+    public function raffled(Raffle $raffle)
     {
-        $prizes = Prize::where('taken', false)->get();
+        $prizes = Prize::where('taken', false)->where('batch', $raffle->batch)->get();
         $concursants = Concursant::where('checked', true)->whereNull('prize_id')->get();
 
         while($prizes->count() != 0 && $concursants->count() != 0 )
@@ -27,11 +40,13 @@ class MainController extends Controller
             $prize->taken = true;
             $prize->save();
 
-            $prizes = Prize::where('taken', false)->get();
+            $prizes = Prize::where('taken', false)->where('batch', $raffle->batch)->get();
             $concursants = Concursant::where('checked', true)->whereNull('prize_id')->get();
         }
 
         $concursants = Concursant::where('checked', true)->whereNotNull('prize_id')->get();
+        $raffle->raffled = true;
+        $raffle->save();
 
         return view('raffled', ['concursants' => $concursants]);
         
@@ -59,8 +74,23 @@ class MainController extends Controller
     
     public function prizes()
     {
+        $raffles = Raffle::all();
         $prizes = Prize::all();        
-        return view('prizes', ['prizes' => $prizes]);
+        return view('prizes', ['prizes' => $prizes, 'raffles' => $raffles,]);
+    }
+    
+    public function raffles()
+    {
+        $raffles = Raffle::all();
+        $prizes = Prize::all();        
+        return view('raffles', ['prizes' => $prizes, 'raffles' => $raffles,]);
+    }
+    
+    public function raffle(Raffle $raffle)
+    {
+        $raffle = raffle;
+        $prizes = Prize::all();        
+        return view('raffle', ['prizes' => $prizes, 'raffle' => $raffle,]);
     }
     
     public function concursants()
@@ -82,7 +112,6 @@ class MainController extends Controller
         ]);
 
         $concursant = Concursant::where('number', $request->get('number'))->first();
-        
         return view('check', ['concursant' => $concursant]);   
     }
 }

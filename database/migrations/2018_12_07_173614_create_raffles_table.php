@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePrizesTable extends Migration
+class CreateRafflesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreatePrizesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prizes', function (Blueprint $table) {
+        Schema::create('raffles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->integer('batch')->default(1);
-            $table->string('article_no');
-            $table->boolean('taken')->default(false);
+            $table->integer('batch');
+            $table->dateTime('date');
+            $table->boolean('raffled')->default(false);
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreatePrizesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prizes');
+        Schema::dropIfExists('raffles');
     }
 }
