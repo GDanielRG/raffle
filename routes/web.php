@@ -25,5 +25,6 @@ Route::get('/concursants', 'MainController@concursants');
 Route::get('/raffles', 'MainController@raffles')->middleware('auth');
 Route::get('/raffles/{raffle}', 'MainController@raffle')->middleware('auth');
 Route::post('/raffled/{raffle}', 'MainController@raffled')->middleware('auth');
+Route::get('/raffled', 'MainController@results')->middleware('auth');
 Route::get('/check', 'MainController@getCheck');
 Route::post('/check', 'MainController@postCheck');

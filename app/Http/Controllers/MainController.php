@@ -52,6 +52,12 @@ class MainController extends Controller
 
     }
 
+    public function results()
+    {
+        $concursants = Concursant::where('checked', true)->whereNotNull('prize_id')->get();
+        return view('raffled', ['concursants' => $concursants]);
+    }
+
     public function getAssist()
     {
         return view('assist');
