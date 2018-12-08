@@ -10,7 +10,7 @@
         <div class="panel-body">
             <ul class="list-group">
                 @foreach($concursants as $concursant)
-                    <li class="list-group-item">{{$concursant->name}} &nbsp; &nbsp; ganó &nbsp; &nbsp; {{$concursant->prize->name}}</li>
+                    <li class="list-group-item">{{$concursant->name}} &nbsp; &nbsp; ganó &nbsp; &nbsp; {{$concursant->prize->name}}  ({{$concursant->prize->article_no}})</li>
                 @endforeach
             </ul>
         </div>
