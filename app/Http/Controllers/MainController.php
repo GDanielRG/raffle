@@ -54,7 +54,7 @@ class MainController extends Controller
 
     public function results()
     {
-        $concursants = Concursant::where('checked', true)->whereNotNull('prize_id')->get();
+        $concursants = Concursant::where('checked', true)->whereNotNull('prize_id')->orderBy('name')->get();
         return view('raffled', ['concursants' => $concursants]);
     }
 
